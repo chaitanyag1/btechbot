@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<!--Base Link-->
+
+<robot name = "btechbot">
+  <link name = "base_link">
+    <visual>
+      <geometry>
+        <box size = "0.22 0.18 0.02"/>
+      </geometry>
+      <origin xyz = "0 0 0"/>
+      <material name = "jute_fibre">
+        <color rgba = " 0.5 0.25 0.0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!--Right Wheel-->
+  <link name = "right wheel">
+    <visual>
+      <geometry>
+        <cylinder radius = "0.044" length = "0.018" />
+      </geometry>
+      <material name = "black">
+        <color rgba = "0 0 0 1" />
+      </material>
+      <origin xyz ="0 0.099 0" rpy ="1.587 0 0" />
+   </visual>
+  </link>
+
+  <!-- Rwheel Joint -->
+  <joint name = "rwheel" type="continuous">
+    <parent link = "base_link"/>
+    <child link = "right wheel"/>
+    <origin xyz = "0 0 0" rpy = "1.587 0 0"/>
+    <axis xyz = "0 1 0"/>
+  </joint>
+
+  <!--Left Wheel-->
+  <link name = "left wheel">
+    <visual>
+      <geometry>
+        <cylinder radius = "0.044" length = "0.018" />
+      </geometry>
+      <material name = "black">
+        <color rgba = "0 0 0 1" />
+      </material>
+      <origin xyz ="0 -0.099 0" rpy ="1.587 0 0" />
+     </visual>
+   </link>
+
+  <!-- Lwheel Joint -->
+  <joint name = "lwheel" type="continuous">
+    <parent link = "base_link"/>
+    <child link = "left wheel"/>
+    <origin xyz = "0 0 0" rpy = "1.587 0 0"/>
+    <axis xyz = "0 1 0"/>
+  </joint>
+
+ </robot>
