@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+
+<robot name = "btechbot">
+
+ <!--Base-link-->
+
+ <link name = "base_link">
+ </link>
+
+ <!--joint-Base-chassis-->
+ <joint name = "chassis_joint" type = "fixed">
+   <parent link = "base_link" />
+   <child link = "chassis" />
+   <origin xyz = "0 0 0" />
+ </joint>
+
+ <!--Chassis Link-->
+  <link name = "chassis">
+    <visual>
+      <geometry>
+        <box size = "0.22 0.18 0.003"/>
+      </geometry>
+      <origin xyz = "0 0 0"/>
+      <material name = "jute_fibre">
+        <color rgba = " 0.5 0.25 0.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!--Right Wheel-->
+  <link name = "right wheel">
+    <visual>
+      <geometry>
+        <cylinder radius = "0.022" length = "0.018" />
+      </geometry>
+      <origin xyz ="0 0.09 0.022" rpy ="1.587 0 0" />
+      <material name = "black tire">
+        <color rgba = "0.5 0.25 0.0 1.0"/>
+      </material>
+   </visual>
+  </link>
+
+  <!-- Rwheel Joint -->
+  <joint name = "rwheel" type="continuous">
+    <parent link = "base_link"/>
+    <child link = "right wheel"/>
+    <origin xyz = "0 0 0" rpy = "1.587 0 0"/>
+    <axis xyz = "0 1 0"/>
+  </joint>
+
+  <!--Left Wheel-->
+  <link name = "left wheel">
+    <visual>
+      <geometry>
+        <cylinder radius = "0.022" length = "0.018" />
+      </geometry>
+      <origin xyz ="0 -0.09 0.022" rpy ="1.587 0 0" />
+      <material name = "black">
+        <color rgba = "0.1 0.1 0.1 1.0"/>
+      </material>
+     </visual>
+   </link>
+
+  <!-- Lwheel Joint -->
+  <joint name = "lwheel" type="continuous">
+    <parent link = "base_link"/>
+    <child link = "left wheel"/>
+    <origin xyz = "0 0 0" rpy = "1.587 0 0"/>
+    <axis xyz = "0 1 0"/>
+  </joint>
+
+  <!--Columns4Floor1-->
+
+  <link name = "column1.1">
+    <visual>
+      <geometry>
+        <cylinder radius = "0.0025" length = "0.05"/>
+      </geometry>
+      <material name = "col">
+        <color rgba = "0.647 0.165 0.165 1.0" />
+      </material>
+      <origin xyz = "0.055 0 0.0485" rpy = "0 0 0" />
+   </visual>
+ </link>
+
+ <!--Joints4Floor1Comlunmns-->
+
+ <joint name = "column1.1" type = "fixed">
+   <parent link = "chassis" />
+   <child link = "column1.1" />
+   <origin xyz = "0 0 0" rpy = "0 0 0" />
+ </joint>
+
+ <!--Floor1-->
+ <link name = "floor1">
+   <visual>
+     <geometry>
+       <cylinder radius = "0.075" length = "0.003" />
+     </geometry>
+     <material name = "white">
+	     <color rgba = "0.8 0.4 0.0 1" />
+     </material>
+     <origin xyz = "0 0 0.075" rpy = "0 0 0" />
+   </visual>
+ </link>
+ 
+ <!--Plate1-->
+ <joint name = "floor1" type = "fixed">
+   <parent link = "column1.1" />
+   <child link = "floor1" />
+   <origin xyz = "0.055 0 0" rpy = "0 0 0" />
+ </joint>
+
+ </robot>
