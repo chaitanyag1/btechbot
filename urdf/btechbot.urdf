@@ -39,6 +39,10 @@
       <inertia ixx = "0.001953" ixz = "0" ixy="0" iyy = "0.01386" iyz = "0" izz = "0.014456" />
     </inertial>
   </link>
+  
+  <gazebo reference="chassis">
+    <material>Gazebo/Orange</material>
+  </gazebo>
 
   <!-- Left Wheel -->
 
@@ -63,6 +67,9 @@
     </inertial>
   </link>
 
+  <gazebo reference="left_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
   
   <joint name = "lwheel" type="continuous">
     <parent link = "base_link"/>
@@ -93,6 +100,10 @@
       <inertia ixx = "0.0002" ixz = "0" ixy="0" iyy = "0.0002" iyz = "0" izz = "0.00004" />
     </inertial>
    </link>
+   
+   <gazebo reference="right_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
 
   <joint name = "rwheel" type="continuous">
     <parent link = "base_link"/>
@@ -103,14 +114,14 @@
 
  <!-- Front Caster wheel -->
 
- <joint name = "fcaster" type = "continuous">
+ <joint name = "fcaster" type = "fixed">
    <parent link = "base_link"/>
-   <child link = "fcaster" />
+   <child link = "front_caster" />
    <origin xyz = "0.0775 0 0" rpy = "0 0 0"/>
-   <axis xyz = "1 1 1" />
+   <!--axis xyz = "1 1 1" /-->
  </joint>
 
- <link name = "fcaster">
+ <link name = "front_caster">
    <visual>
      <geometry>
        <sphere radius = "0.022" />
@@ -133,14 +144,14 @@
 
  <!-- Back Caster Wheel -->
 
- <joint name = "bcaster" type = "continuous">
+ <joint name = "bcaster" type = "fixed">
    <parent link = "base_link"/>
-   <child link = "bcaster" />
+   <child link = "back_caster" />
    <origin xyz = "-0.0775 0 0" rpy = "0 0 0"/>
-   <axis xyz = "1 1 1" />
+   <!--axis xyz = "1 1 1" /-->
  </joint>
 
- <link name = "bcaster">
+ <link name = "back_caster">
    <visual>
      <geometry>
         <sphere radius = "0.022" />
@@ -163,7 +174,7 @@
 
   <!-- Joint and links for Columns of 1st floor-->
 
-  <link name = "column1.1">
+  <link name = "column1_1">
     <visual>
       <geometry>
         <cylinder radius = "0.0025" length = "0.05"/>
@@ -186,7 +197,7 @@
 
  <joint name = "column1.1" type = "fixed">
    <parent link = "chassis" />
-   <child link = "column1.1" />
+   <child link = "column1_1" />
    <origin xyz = "0.055 0 0.025" rpy = "0 0 0" />
  </joint>
 
@@ -194,11 +205,11 @@
 
  <joint name = "column1.2" type = "fixed">
    <parent link = "chassis" />
-   <child link = "column1.2" />
+   <child link = "column1_2" />
    <origin xyz = "-0.055 0 0.025" rpy = "0 0 0" />
  </joint>
 
- <link name = "column1.2">
+ <link name = "column1_2">
    <visual>
      <geometry>
        <cylinder radius = "0.0025" length = "0.05"/>
@@ -223,11 +234,11 @@
 
  <joint name = "column1.3" type = "fixed">
    <parent link = "chassis" />
-   <child link = "column1.3" />
+   <child link = "column1_3" />
    <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
  </joint>
 
- <link name = "column1.3">
+ <link name = "column1_3">
    <visual>
      <geometry>
        <cylinder radius = "0.0025" length = "0.05"/>
@@ -252,11 +263,11 @@
 
  <joint name = "column1.4" type = "fixed">
    <parent link = "chassis" />
-   <child link = "column1.4" />
+   <child link = "column1_4" />
    <origin xyz = "0 0.045 0.025" rpy = "0 0 0" />
  </joint>
 
- <link name = "column1.4">
+ <link name = "column1_4">
     <visual>
       <geometry>
         <cylinder radius = "0.0025" length = "0.05"/>
@@ -299,36 +310,40 @@
       <inertia ixx = "0.000625" ixy="0" ixz = "0" iyy = "0.000625" iyz = "0" izz = "0.00008333" />
     </inertial>
  </link> 
+ 
+ <gazebo reference="floor1">
+    <material>Gazebo/Red</material>
+  </gazebo>
 	 
  <!--Column Floor Joints-->
 
  <joint name = "floor1.1" type = "fixed">
-   <parent link = "column1.1" />
+   <parent link = "column1_1" />
    <child link = "floor1" />
    <origin xyz = "-0.055 0 0.025" rpy = "0 0 0" />
  </joint>
 
- <joint name = "floor1.2" type = "fixed">
-   <parent link = "column1.2" />
+ <!--joint name = "floor1.2" type = "fixed">
+   <parent link = "column1_2" />
    <child link = "floor1" />
    <origin xyz = "0.055 0 0.025" rpy = "0 0 0" />
- </joint>
+ </joint-->
 
- <joint name = "floor1.3" type = "fixed">
-   <parent link = "column1.3" />
+ <!--joint name = "floor1.3" type = "fixed">
+   <parent link = "column1_3" />
    <child link = "floor1" />
    <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
- </joint>
+ </joint-->
 
- <joint name = "floor1.4" type = "fixed">
-   <parent link = "column1.4" />
+ <!--joint name = "floor1.4" type = "fixed">
+   <parent link = "column1_4" />
    <child link = "floor1" />
    <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
- </joint>
+ </joint-->
 
 <!-- Joints and links for Floor 2 Columns -->
 
- <link name = "column2.1">
+ <link name = "column2_1">
    <visual>
      <geometry>
        <cylinder radius = "0.0025" length = "0.05"/>
@@ -351,7 +366,7 @@
 
  <joint name = "column2.1" type = "fixed">
     <parent link = "floor1" />
-    <child link = "column2.1" />
+    <child link = "column2_1" />
     <origin xyz = "0.055 0 0.025" rpy = "0 0 0" />
  </joint>
 
@@ -359,11 +374,11 @@
 
  <joint name = "column2.2" type = "fixed">
    <parent link = "floor1" />
-   <child link = "column2.2" />
+   <child link = "column2_2" />
    <origin xyz = "-0.055 0 0.025" rpy = "0 0 0" />
  </joint>
 
- <link name = "column2.2">
+ <link name = "column2_2">
    <visual>
      <geometry>
        <cylinder radius = "0.0025" length = "0.05"/>
@@ -388,11 +403,11 @@
 
  <joint name = "column2.3" type = "fixed">
    <parent link = "floor1" />
-   <child link = "column2.3" />
+   <child link = "column2_3" />
    <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
  </joint>
 
- <link name = "column2.3">
+ <link name = "column2_3">
    <visual>
      <geometry>
         <cylinder radius = "0.0025" length = "0.05"/>
@@ -417,11 +432,11 @@
 
  <joint name = "column2.4" type = "fixed">
    <parent link = "floor1" />
-   <child link = "column2.4" />
+   <child link = "column2_4" />
    <origin xyz = "0 0.045 0.025" rpy = "0 0 0" />
  </joint>
 
- <link name = "column2.4" type = "fixed">
+ <link name = "column2_4" type = "fixed">
    <visual>
      <geometry>
        <cylinder radius = "0.0025" length = "0.05" />
@@ -464,31 +479,35 @@
       <inertia ixx = "0.000625" ixy="0" ixz = "0" iyy = "0.000625" iyz = "0" izz = "0.00008333" />
     </inertial>
  </link>
+ 
+  <gazebo reference="floor2">
+    <material>Gazebo/Red</material>
+  </gazebo>
 
  <!--Column Floor Joints-->
 
- <joint name = "floor2.1" type = "fixed">
-   <parent link = "column2.1" />
+ <!--joint name = "floor2.1" type = "fixed">
+   <parent link = "column2_1" />
    <child link = "floor2" />
    <origin xyz = "-0.055 0 0.025" rpy = "0 0 0" />
- </joint>
+ </joint-->
 
  <joint name = "floor2.2" type = "fixed">
-   <parent link = "column2.2" />
+   <parent link = "column2_2" />
    <child link = "floor2" />
    <origin xyz = "0.055 0 0.025" rpy = "0 0 0" />
  </joint>
 
- <joint name = "floor2.3" type = "fixed">
-   <parent link = "column2.3" />
+ <!--joint name = "floor2.3" type = "fixed">
+   <parent link = "column2_3" />
    <child link = "floor2" />
    <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
- </joint>
+ </joint-->
 
- <joint name = "floor2.4" type = "fixed">
-   <parent link = "column2.4" />
+ <!--joint name = "floor2_4" type = "fixed">
+   <parent link = "column2_4" />
    <child link = "floor2" />
    <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
- </joint>
+ </joint-->
 
 </robot>
