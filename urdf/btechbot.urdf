@@ -29,7 +29,7 @@
     </visual>
   </link>
 
-  <!-- Left Wheel Link-->
+  <!-- Left Wheel -->
 
   <link name = "left_wheel">
     <visual>
@@ -51,7 +51,7 @@
     <axis xyz = "0 0 -1"/>
   </joint>
 
- <!-- Right Wheel Joint -->
+ <!-- Right Wheel -->
 
   <link name = "right_wheel">
     <visual>
@@ -83,14 +83,13 @@
       <material name = "col">
         <color rgba = "0.5 0.1 0.1 1.0" />
       </material>
-      <!--origin xyz = "0.055 0 0.0485" rpy = "0 0 0" /-->
    </visual>
  </link>
 
  <joint name = "column1.1" type = "fixed">
    <parent link = "chassis" />
    <child link = "column1.1" />
-   <origin xyz = "0.055 0 0" rpy = "0 0 0" />
+   <origin xyz = "0.055 0 0.025" rpy = "0 0 0" />
  </joint>
 
  <!-- Column1.2 -->
@@ -98,7 +97,7 @@
  <joint name = "column1.2" type = "fixed">
    <parent link = "chassis" />
    <child link = "column1.2" />
-   <origin xyz = "-0.055 0 0" rpy = "0 0 0" />
+   <origin xyz = "-0.055 0 0.025" rpy = "0 0 0" />
  </joint>
 
  <link name = "column1.2">
@@ -117,7 +116,7 @@
  <joint name = "column1.3" type = "fixed">
    <parent link = "chassis" />
    <child link = "column1.3" />
-   <origin xyz = "0 -0.045 0" rpy = "0 0 0" />
+   <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
  </joint>
 
  <link name = "column1.3">
@@ -136,7 +135,7 @@
  <joint name = "column1.4" type = "fixed">
    <parent link = "chassis" />
    <child link = "column1.4" />
-   <origin xyz = "0 0.045 0" rpy = "0 0 0" />
+   <origin xyz = "0 0.045 0.025" rpy = "0 0 0" />
  </joint>
 
  <link name = "column1.4">
@@ -169,25 +168,140 @@
  <joint name = "floor1.1" type = "fixed">
    <parent link = "column1.1" />
    <child link = "floor1" />
-   <origin xyz = "-0.055 0 0.0515" rpy = "0 0 0" />
+   <origin xyz = "-0.055 0 0.025" rpy = "0 0 0" />
  </joint>
 
  <joint name = "floor1.2" type = "fixed">
    <parent link = "column1.2" />
    <child link = "floor1" />
-   <origin xyz = "0.055 0 0.0515" rpy = "0 0 0" />
+   <origin xyz = "0.055 0 0.025" rpy = "0 0 0" />
  </joint>
 
  <joint name = "floor1.3" type = "fixed">
    <parent link = "column1.3" />
    <child link = "floor1" />
-   <origin xyz = "0 -0.045 0.0515" rpy = "0 0 0" />
+   <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
  </joint>
 
  <joint name = "floor1.4" type = "fixed">
    <parent link = "column1.4" />
    <child link = "floor1" />
-   <origin xyz = "0 -0.045 0.0515" rpy = "0 0 0" />
+   <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
  </joint>
 
- </robot>
+<!-- Joints and links for Floor 2 Columns -->
+
+ <link name = "column2.1">
+   <visual>
+     <geometry>
+       <cylinder radius = "0.0025" length = "0.05"/>
+     </geometry>
+     <material name = "col">
+        <color rgba = "0.5 0.1 0.1 1.0" />
+     </material>
+   </visual>
+ </link>
+
+ <joint name = "column2.1" type = "fixed">
+    <parent link = "floor1" />
+    <child link = "column2.1" />
+    <origin xyz = "0.055 0 0.025" rpy = "0 0 0" />
+ </joint>
+
+ <!-- Column2.2 -->
+
+ <joint name = "column2.2" type = "fixed">
+   <parent link = "floor1" />
+   <child link = "column2.2" />
+   <origin xyz = "-0.055 0 0.025" rpy = "0 0 0" />
+ </joint>
+
+ <link name = "column2.2">
+   <visual>
+     <geometry>
+       <cylinder radius = "0.0025" length = "0.05"/>
+     </geometry>
+     <material name = "col">
+       <color rgba = "0.5 0.1 0.1 1.0" />	
+     </material>
+   </visual>
+  </link>
+
+ <!-- Column2.3 -->
+
+ <joint name = "column2.3" type = "fixed">
+   <parent link = "floor1" />
+   <child link = "column2.3" />
+   <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
+ </joint>
+
+ <link name = "column2.3">
+   <visual>
+     <geometry>
+        <cylinder radius = "0.0025" length = "0.05"/>
+     </geometry>
+     <material name = "col">
+       <color rgba = "0.5 0.1 0.1 1.0" />
+     </material>
+   </visual>
+ </link>
+
+ <!-- Column2.4 -->
+
+ <joint name = "column2.4" type = "fixed">
+   <parent link = "floor1" />
+   <child link = "column2.4" />
+   <origin xyz = "0 0.045 0.025" rpy = "0 0 0" />
+ </joint>
+
+ <link name = "column2.4" type = "fixed">
+   <visual>
+     <geometry>
+       <cylinder radius = "0.0025" length = "0.05" />
+     </geometry>
+     <material name = "col">
+       <color rgba = "0.5 0.1 0.1 1.0" />
+     </material>
+   </visual>
+ </link> 
+
+ <!-- Floor 2 -->
+
+ <link name = "floor2">
+   <visual>
+     <geometry>
+       <cylinder radius = "0.075" length = "0.003" />
+     </geometry>
+     <material name = "white">
+       <color rgba = "0.8 0.4 0.0 1" />
+     </material>
+   </visual>
+ </link>
+
+ <!--Column Floor Joints-->
+
+ <joint name = "floor2.1" type = "fixed">
+   <parent link = "column2.1" />
+   <child link = "floor2" />
+   <origin xyz = "-0.055 0 0.025" rpy = "0 0 0" />
+ </joint>
+
+ <joint name = "floor2.2" type = "fixed">
+   <parent link = "column2.2" />
+   <child link = "floor2" />
+   <origin xyz = "0.055 0 0.025" rpy = "0 0 0" />
+ </joint>
+
+ <joint name = "floor2.3" type = "fixed">
+   <parent link = "column2.3" />
+   <child link = "floor2" />
+   <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
+ </joint>
+
+ <joint name = "floor2.4" type = "fixed">
+   <parent link = "column2.4" />
+   <child link = "floor2" />
+   <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
+ </joint>
+
+</robot>
