@@ -1,6 +1,6 @@
 <launch>
 <!-- Load the URDF file -->
-<param name="robot_description" textfile="$(find btechbot)/urdf/btechbot.urdf" />
+<param name="robot_description" textfile="$(find btechbot)/urdf/btechbot_core.xacro" />
 <!-- Launch Rviz -->
 <node name="rviz" pkg="rviz" type="rviz" args="-d $(find urdf_tutorial)/rviz/urdf.rviz"/>
 </launch>

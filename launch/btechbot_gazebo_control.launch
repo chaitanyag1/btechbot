@@ -1,0 +1,24 @@
+<launch>
+<arg name="model" default = "btechbot"/>
+<!-- Load the URDF file -->	
+<param name="robot_description" textfile="$(find btechbot)/urdf/btechbot.urdf" />
+<!-- Launch Gazebo -->
+<include file="$(find gazebo_ros)/launch/empty_world.launch" >
+<arg name="world_name" value="$(find gazebo_ros)/worlds/empty.world" />
+</include>	
+<!-- Spawning the model -->
+<node name = "spawn_urdf" pkg = "gazebo_ros" type = "spawn_model" respawn = "false" output = "screen" args = "-urdf -model btechbot_$(arg model) -param robot_description" />
+<!-- Start the robot state publisher -->
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+<!-- Load the diff_drive_controller -->
+<!--include file="$(find diff_drive_controller)/launch/diff_drive_controller.launch">
+<arg name="command_timeout" value="10" />
+<arg name="port" value="/dev/ttyACM0" />
+</include-->
+<node name="controller_manager" pkg="controller_manager" type="controller_manager" />
+<!-- Start the robot state publisher -->
+<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>	
+<!-- Start the diff drive controller -->
+<node name="conroller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="diff_drive_controller"/>
+<rosparam file="$(find btechbot)/config/controllers.yaml" command="load"/>
+</launch>

@@ -1,0 +1,18 @@
+left_wheel_controller:
+ type: "pid"
+ pid:
+         p: 1.0
+         i: 0.0
+         d: 0.0
+         i_clamp: 1.0
+
+right_wheel_controller:
+type: "pid"
+pid:
+        p: 1.0
+        i: 0.0
+        d: 0.0
+        i_clamp: 1.0
+wheel_separation: 0.18
+wheel_radius: 0.022
+publish_rate: 50.0

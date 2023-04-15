@@ -1,0 +1,35 @@
+
+btechbot:
+ joint_vel_controller:
+ type: "joint_velocity_controller/JointVelocityController"
+ left_joint: "lwheel"
+ right_joint: "rwheel"
+ pid:
+ p: 100.0
+ i: 0.1
+ d: 10.0
+
+
+joint_state_controller:
+ type: "joint_state_controller/JointStateController"
+ publish_rate: 50
+
+left_wheel_controller:
+ type: diff_drive_controller/DiffDriveController
+ left_wheel: lwheel
+ right_wheel: rwheel
+ wheel_separation: 0.18
+ wheel_radius: 0.022
+ publish_rate: 50
+
+right_wheel_controller:
+ type: diff_drive_controller/DiffDriveController
+ left_wheel: lwheel
+ right_wheel: rwheel
+ wheel_separation: 0.18
+ wheel_radius: 0.022
+ publish_rate: 50
+
+ robot_state_publisher:
+ type: robot_state_publisher/RobotStatePublisher
+

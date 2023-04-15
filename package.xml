@@ -58,7 +58,8 @@
   <exec_depend>roscpp</exec_depend>
   <exec_depend>roslaunch</exec_depend>
   <exec_depend>std_msgs</exec_depend>
-
+  <build_depend>ros-noetic-diff-drive-controller</build_depend>
+  <exec_depend>ros-noetic-diff-drive-controller</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

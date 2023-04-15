@@ -1,13 +1,9 @@
 <?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="btechbot">
 
-<robot name = "btechbot">
-
- <!--Base-link-->
 
  <link name = "base_link">
  </link>
-
- <!--joint-Base-chassis-->
 
  <joint name = "chassis_joint" type = "fixed">
    <parent link = "base_link" />
@@ -120,6 +116,12 @@
    <origin xyz = "0.0775 0 0" rpy = "0 0 0"/>
    <!--axis xyz = "1 1 1" /-->
  </joint>
+
+ <gazebo reference="front_caster">
+   <material>Gazebo/Violet</material>
+   <mu1 value="0.001"/>
+   <mu2 value="0.001"/>
+ </gazebo>
 
  <link name = "front_caster">
    <visual>
@@ -509,5 +511,60 @@
    <child link = "floor2" />
    <origin xyz = "0 -0.045 0.025" rpy = "0 0 0" />
  </joint-->
+ <!--
+ <controller name="joint_state_controller" type="joint_state_controller/JointStateController">
+   <joint name="lwheel" hardware_interface="hardware_interface/JointStateInterface" />
+   <joint name="rwheel" hardware_interface="hardware_interface/JointStateInterface" />
+ </controller>
+
+       <transmission name="left_wheel_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="lwheel">
+          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="left_wheel_motor">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+      </transmission>
+
+      <transmission name="right_wheel_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rwheel">
+          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="right_wheel_motor">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+      </transmission>
+
+ <gazebo>
+   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+	   <robotNamespace>/btechbot</robotNamespace>
+	   <controlPeriod>0.001</controlPeriod>
+	   <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType> 
+   </plugin>
+ </gazebo>
+	 -->
+	 
+<gazebo>
+	<plugin name="diff_drive_btechbot" filename="libgazebo_ros_diff_drive.so">
+
+		<leftJoint>lwheel</leftJoint>
+		<rightJoint>rwheel</rightJoint>
+		<wheelSeparation>0.18</wheelSeparation>
+		<wheelDiameter>0.044</wheelDiameter>
+		<commandTopic>cmd_vel</commandTopic>
+		<odomTopic>odom</odomTopic>
+		<maxTorque>100</maxTorque>
+		<maxAcceleration>10.0</maxAcceleration>
+		
+		<odometryFrame>odom</odometryFrame>
+		<robotBaseFrame>base_link</robotBaseFrame>
+	        <publishWheelJointState>true</publishWheelJointState>	
+		<publishOdom>true</publishOdom>
+		<publishOdomTf>true</publishOdomTf>
+		<publishWheelTf>true</publishWheelTf>
+</plugin>
+</gazebo>
 
 </robot>
