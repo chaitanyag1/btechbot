@@ -599,7 +599,7 @@
 			<ros>
 				<argument>=~/out:=scan</argument>
 			</ros>
-			<topicName>sensor_msgs/LaserScan</topicName>
+			<topicName>/scan</topicName>
 			<frameName>laser_frame</frameName>
 		</plugin>
 	</sensor>
