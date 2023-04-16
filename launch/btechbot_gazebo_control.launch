@@ -1,10 +1,10 @@
 <launch>
 <arg name="model" default = "btechbot"/>
 <!-- Load the URDF file -->	
-<param name="robot_description" textfile="$(find btechbot)/urdf/btechbot.urdf" />
+<param name="robot_description" textfile="$(find btechbot)/urdf/btechbot_core.xacro" />
 <!-- Launch Gazebo -->
 <include file="$(find gazebo_ros)/launch/empty_world.launch" >
-<arg name="world_name" value="$(find gazebo_ros)/worlds/empty.world" />
+<arg name="world_name" value="$(find btechbot)/worlds/obstacles.world" />
 </include>	
 <!-- Spawning the model -->
 <node name = "spawn_urdf" pkg = "gazebo_ros" type = "spawn_model" respawn = "false" output = "screen" args = "-urdf -model btechbot_$(arg model) -param robot_description" />
